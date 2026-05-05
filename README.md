@@ -12,7 +12,7 @@ A Progressive Web App for managing community doorknocking campaigns in Queenslan
 ## Stack
 | Layer | Technology |
 |---|---|
-| Frontend | React + TailwindCSS + Vite (PWA) |
+| Frontend | React + Next.js 14 (App Router) + TailwindCSS |
 | Backend | Python FastAPI |
 | Database | PostgreSQL |
 | Offline | IndexedDB via Dexie |
@@ -69,10 +69,10 @@ API docs at: http://localhost:8000/docs
 ```bash
 cd frontend
 npm install
-cp .env.example .env           # set VITE_API_BASE_URL=http://localhost:8000/api
+cp .env.example .env           # set NEXT_PUBLIC_API_BASE_URL=http://localhost:8000/api
 npm run dev
 ```
-App will be at: http://localhost:5173
+App will be at: http://localhost:3000
 
 ### 4. Default login (after running seed.py)
 | Role | Email | Password |
@@ -134,6 +134,15 @@ doorknocking-app/
 │   └── requirements.txt
 │
 └── frontend/
+    ├── app/                   # Next.js App Router — file-based routing
+    │   ├── layout.jsx         # Root layout (imports global CSS)
+    │   ├── page.jsx           # / → redirects to /households
+    │   ├── login/page.jsx     # Public login page
+    │   ├── households/page.jsx
+    │   ├── visits/page.jsx
+    │   ├── tasks/page.jsx
+    │   ├── announcements/page.jsx
+    │   └── users/page.jsx
     └── src/
         ├── features/          # One folder per feature (mirrors backend)
         │   ├── users/         # Person A
@@ -141,7 +150,8 @@ doorknocking-app/
         │   ├── visits/        # Person C — TODO
         │   ├── tasks/         # Person D — TODO
         │   └── announcements/ # Person D — TODO
-        ├── shared/            # Reusable components + hooks
+        ├── components/        # Shared UI — NavBar, ProtectedLayout
+        ├── shared/            # Reusable hooks + utilities
         ├── offline/           # IndexedDB + sync queue
         ├── store/             # Zustand (auth, sync state)
         └── api/               # Axios client

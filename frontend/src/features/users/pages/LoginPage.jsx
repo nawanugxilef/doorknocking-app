@@ -1,5 +1,6 @@
+'use client'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useRouter } from 'next/navigation'
 import { loginUser } from '../services/usersApi'
 import { useAuthStore } from '../../../store/authStore'
 
@@ -9,8 +10,8 @@ export default function LoginPage() {
   const [error, setError]       = useState(null)
   const [loading, setLoading]   = useState(false)
 
-  const login    = useAuthStore(s => s.login)
-  const navigate = useNavigate()
+  const login  = useAuthStore(s => s.login)
+  const router = useRouter()
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -19,7 +20,7 @@ export default function LoginPage() {
     try {
       const { access_token, user } = await loginUser(email, password)
       login(user, access_token)
-      navigate('/households')
+      router.push('/households')
     } catch (err) {
       setError(err.response?.data?.detail || 'Login failed. Check your email and password.')
     } finally {
@@ -39,9 +40,7 @@ export default function LoginPage() {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Email
-            </label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
             <input
               type="email"
               required
@@ -53,9 +52,7 @@ export default function LoginPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Password
-            </label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
             <input
               type="password"
               required

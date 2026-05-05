@@ -1,3 +1,4 @@
+'use client'
 // ── PERSON D: Build this page ─────────────────────────────────────────────────
 // This page shows team announcements, newest first (pinned ones at top).
 //

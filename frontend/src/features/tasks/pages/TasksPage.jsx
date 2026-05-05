@@ -1,3 +1,4 @@
+'use client'
 // ── PERSON D: Build this page ─────────────────────────────────────────────────
 // This page shows tasks assigned to the current user (doorknocker)
 // or all tasks (admin/coordinator).

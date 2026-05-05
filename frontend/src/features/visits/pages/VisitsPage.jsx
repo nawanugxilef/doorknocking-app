@@ -1,3 +1,4 @@
+'use client'
 // ── PERSON C: Build this page ─────────────────────────────────────────────────
 // This page lets doorknockers log visits and see their visit history.
 //

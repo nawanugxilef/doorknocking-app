@@ -1,3 +1,4 @@
+'use client'
 import { useHouseholds } from '../hooks/useHouseholds'
 
 const STATUS_COLORS = {
