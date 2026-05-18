@@ -45,8 +45,6 @@ cd backend
 ./gradlew bootRun
 ```
 
-Default local config in [application.properties](/Applications/XAMPP/xamppfiles/htdocs/asuransi/doorknocking/backend/src/main/resources/application.properties):
-
 ```text
 DATABASE_URL=jdbc:postgresql://localhost:5432/doorknocking
 DATABASE_USERNAME=pepelgunawan
