@@ -109,10 +109,8 @@ Live backend health check:
 
 - [https://backend-production-358a.up.railway.app/api/health](https://backend-production-358a.up.railway.app/api/health)
 
-Login :
-Super Admin
-Email: admin@doorknock.test
-Password: password123
+JWT_SECRET=<your-base64-secret-min-32-bytes>
+BOOTSTRAP_ADMIN_PASSWORD=<your-secure-password>
 
 Deployment model:
 
