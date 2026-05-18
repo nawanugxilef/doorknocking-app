@@ -109,6 +109,11 @@ Live backend health check:
 
 - [https://backend-production-358a.up.railway.app/api/health](https://backend-production-358a.up.railway.app/api/health)
 
+Login :
+Super Admin
+Email: admin@doorknock.test
+Password: password123
+
 Deployment model:
 
 1. `backend/` deploys to Railway using Docker.
