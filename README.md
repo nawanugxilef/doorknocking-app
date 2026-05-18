@@ -73,3 +73,28 @@ Default API URL:
 ```text
 NEXT_PUBLIC_API_BASE_URL=http://localhost:8080
 ```
+
+## Deploy Online
+
+Recommended MVP deployment:
+
+1. Deploy `backend/` to Render, Railway, or Fly using Docker.
+2. Deploy `frontend/` to Vercel.
+3. Set frontend env `NEXT_PUBLIC_API_BASE_URL` to the backend URL.
+4. Set backend env `APP_CORS_ALLOWED_ORIGINS` to the Vercel frontend URL.
+
+Backend required env:
+
+```text
+DATABASE_URL=<postgres connection string>
+JWT_SECRET=<base64 secret, minimum 32 bytes>
+BOOTSTRAP_ADMIN_EMAIL=<first admin email>
+BOOTSTRAP_ADMIN_PASSWORD=<first admin password>
+APP_CORS_ALLOWED_ORIGINS=https://your-frontend.vercel.app
+```
+
+Backend health check:
+
+```text
+GET /api/health
+```

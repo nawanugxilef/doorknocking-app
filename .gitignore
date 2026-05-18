@@ -1,0 +1,16 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+!.env.production.example
+node_modules/
+.next/
+out/
+build/
+.gradle/
+*.log
+*.tsbuildinfo
+frontend/node_modules/
+frontend/.next/
+backend/build/
+backend/.gradle/
