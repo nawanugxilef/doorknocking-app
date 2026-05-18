@@ -12,8 +12,8 @@ A Progressive Web App for managing community doorknocking campaigns in Queenslan
 ## Stack
 | Layer | Technology |
 |---|---|
-| Frontend | React + TailwindCSS + Vite (PWA) |
-| Backend | Python FastAPI |
+| Frontend | TailwindCSS  |
+| Backend | Java Spring Boot |
 | Database | PostgreSQL |
 | Offline | IndexedDB via Dexie |
 | Auth | JWT (python-jose) + bcrypt |
