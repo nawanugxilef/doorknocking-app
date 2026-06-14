@@ -14,6 +14,12 @@ export type AuthResponse = {
   user: UserResponse;
 };
 
+export type RegisterResponse = {
+  email: string;
+  message: string;
+  expiresInMinutes: number;
+};
+
 const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8080";
 

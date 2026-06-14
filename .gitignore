@@ -14,3 +14,4 @@ frontend/node_modules/
 frontend/.next/
 backend/build/
 backend/.gradle/
+.DS_Store

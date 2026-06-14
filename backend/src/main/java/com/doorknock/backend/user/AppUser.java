@@ -55,6 +55,14 @@ public class AppUser implements UserDetails {
     @Column(nullable = false)
     private UserRole role;
 
+    private Boolean emailVerified;
+
+    private String verificationCodeHash;
+
+    private Instant verificationExpiresAt;
+
+    private Instant verificationSentAt;
+
     @Column(nullable = false)
     private Instant createdAt;
 
@@ -69,5 +77,9 @@ public class AppUser implements UserDetails {
     @Override
     public String getUsername() {
         return email;
+    }
+
+    public boolean isEmailVerified() {
+        return Boolean.TRUE.equals(emailVerified);
     }
 }

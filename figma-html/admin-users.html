@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Doorknock - Manage Users</title>
+    <style>
+      :root {
+        --navy: #071d68;
+        --bg: #f5f5f1;
+        --border: #e2e8f0;
+        --text: #0f172a;
+        --muted: #64748b;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      .page {
+        min-height: 100vh;
+        padding: 24px;
+      }
+
+      .shell {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .hero {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 24px;
+        border-radius: 28px;
+        background: var(--navy);
+        color: white;
+        padding: 24px;
+      }
+
+      .hero p {
+        margin: 0;
+        color: #dbeafe;
+        font-size: 14px;
+      }
+
+      .hero h1 {
+        margin: 8px 0 0;
+        font-size: 38px;
+      }
+
+      .back {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 44px;
+        padding: 0 16px;
+        border-radius: 18px;
+        background: white;
+        color: var(--navy);
+        font-weight: 700;
+      }
+
+      .content {
+        margin-top: 24px;
+        display: grid;
+        gap: 24px;
+        grid-template-columns: 380px 1fr;
+      }
+
+      .card {
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        background: white;
+        padding: 24px;
+        box-shadow: 0 12px 24px rgba(15, 23, 42, 0.04);
+      }
+
+      h2 {
+        margin: 0;
+        font-size: 28px;
+      }
+
+      .intro {
+        margin-top: 20px;
+        border-radius: 18px;
+        background: #eff6ff;
+        color: var(--navy);
+        padding: 16px;
+        font-size: 14px;
+        line-height: 1.65;
+      }
+
+      .form {
+        margin-top: 20px;
+        display: grid;
+        gap: 14px;
+      }
+
+      label span {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 14px;
+        font-weight: 700;
+        color: #334155;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: white;
+        color: var(--text);
+        font: inherit;
+      }
+
+      input,
+      select {
+        height: 48px;
+        padding: 0 14px;
+      }
+
+      textarea {
+        min-height: 96px;
+        padding: 14px;
+        resize: none;
+      }
+
+      .cta {
+        margin-top: 18px;
+        width: 100%;
+        height: 48px;
+        border: 0;
+        border-radius: 18px;
+        background: var(--navy);
+        color: white;
+        font-weight: 700;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        min-width: 680px;
+        font-size: 14px;
+      }
+
+      th,
+      td {
+        text-align: left;
+        padding: 16px 12px 16px 0;
+        border-bottom: 1px solid #f1f5f9;
+        vertical-align: top;
+      }
+
+      th {
+        color: var(--muted);
+        font-weight: 700;
+      }
+
+      td:last-child,
+      th:last-child {
+        text-align: right;
+        padding-right: 0;
+      }
+
+      .actions {
+        white-space: nowrap;
+      }
+
+      .icon-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 12px;
+        font-size: 16px;
+      }
+
+      .edit {
+        color: var(--navy);
+        background: #eff6ff;
+      }
+
+      .delete {
+        color: #dc2626;
+        background: #fef2f2;
+        margin-left: 8px;
+      }
+
+      @media (max-width: 1100px) {
+        .content {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <div class="shell">
+        <div class="hero">
+          <div>
+            <p>Admin user management</p>
+            <h1>Manage team accounts</h1>
+          </div>
+          <div class="back">Back to profile</div>
+        </div>
+
+        <div class="content">
+          <section class="card">
+            <h2>Edit user</h2>
+            <div class="form">
+              <label>
+                <span>Full name</span>
+                <input value="Alex Tan" />
+              </label>
+              <label>
+                <span>Email</span>
+                <input value="alex@doorknock.test" />
+              </label>
+              <label>
+                <span>Phone number</span>
+                <input value="+61 412 330 221" />
+              </label>
+              <label>
+                <span>Role</span>
+                <select>
+                  <option>Volunteer / Doorknocker</option>
+                  <option selected>Volunteer Coordinator</option>
+                  <option>Admin</option>
+                </select>
+              </label>
+              <label>
+                <span>Address optional</span>
+                <textarea>12 Angus Street, Newtown, Sydney</textarea>
+              </label>
+            </div>
+            <button class="cta" type="button">Save changes</button>
+          </section>
+
+          <section class="card" style="overflow-x:auto;">
+            <h2>Current users</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                  <th>Phone</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Anthony Admin</strong></td>
+                  <td>admin@doorknock.test</td>
+                  <td>Admin</td>
+                  <td>+61 493 707 842</td>
+                  <td class="actions"><span class="icon-btn edit">✎</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Alex Tan</strong></td>
+                  <td>alex@doorknock.test</td>
+                  <td>Volunteer Coordinator</td>
+                  <td>+61 412 330 221</td>
+                  <td class="actions">
+                    <span class="icon-btn edit">✎</span>
+                    <span class="icon-btn delete">🗑</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Angus Brown</strong></td>
+                  <td>angus@doorknock.test</td>
+                  <td>Volunteer / Doorknocker</td>
+                  <td>+61 401 222 909</td>
+                  <td class="actions">
+                    <span class="icon-btn edit">✎</span>
+                    <span class="icon-btn delete">🗑</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Mia Chen</strong></td>
+                  <td>mia@doorknock.test</td>
+                  <td>Volunteer / Doorknocker</td>
+                  <td>NA</td>
+                  <td class="actions">
+                    <span class="icon-btn edit">✎</span>
+                    <span class="icon-btn delete">🗑</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

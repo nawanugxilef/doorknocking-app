@@ -2,7 +2,10 @@ package com.doorknock.backend.auth;
 
 import com.doorknock.backend.auth.dto.AuthResponse;
 import com.doorknock.backend.auth.dto.LoginRequest;
+import com.doorknock.backend.auth.dto.RegisterResponse;
 import com.doorknock.backend.auth.dto.RegisterRequest;
+import com.doorknock.backend.auth.dto.ResendVerificationRequest;
+import com.doorknock.backend.auth.dto.VerifyEmailRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,12 +23,22 @@ public class AuthController {
 
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
-    public AuthResponse register(@Valid @RequestBody RegisterRequest request) {
+    public RegisterResponse register(@Valid @RequestBody RegisterRequest request) {
         return authService.register(request);
     }
 
     @PostMapping("/login")
     public AuthResponse login(@Valid @RequestBody LoginRequest request) {
         return authService.login(request);
+    }
+
+    @PostMapping("/verify-email")
+    public AuthResponse verifyEmail(@Valid @RequestBody VerifyEmailRequest request) {
+        return authService.verifyEmail(request);
+    }
+
+    @PostMapping("/resend-verification")
+    public RegisterResponse resendVerification(@Valid @RequestBody ResendVerificationRequest request) {
+        return authService.resendVerificationCode(request.email());
     }
 }

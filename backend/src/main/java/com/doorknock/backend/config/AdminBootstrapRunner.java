@@ -30,6 +30,7 @@ public class AdminBootstrapRunner implements CommandLineRunner {
                 .email(properties.email().toLowerCase())
                 .password(passwordEncoder.encode(properties.password()))
                 .role(UserRole.ADMIN)
+                .emailVerified(true)
                 .createdAt(now)
                 .updatedAt(now)
                 .build());
