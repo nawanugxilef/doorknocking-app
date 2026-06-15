@@ -1,14 +1,14 @@
 package com.doorknock.backend;
 
 import com.doorknock.backend.config.AdminBootstrapProperties;
-import com.doorknock.backend.config.MailProperties;
+import com.doorknock.backend.config.EmailVerificationProperties;
 import java.net.URI;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 @SpringBootApplication
-@EnableConfigurationProperties({AdminBootstrapProperties.class, MailProperties.class})
+@EnableConfigurationProperties({AdminBootstrapProperties.class, EmailVerificationProperties.class})
 public class BackendApplication {
 
 	public static void main(String[] args) {

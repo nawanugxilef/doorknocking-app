@@ -5,6 +5,7 @@ import com.doorknock.backend.auth.dto.LoginRequest;
 import com.doorknock.backend.auth.dto.RegisterResponse;
 import com.doorknock.backend.auth.dto.RegisterRequest;
 import com.doorknock.backend.auth.dto.ResendVerificationRequest;
+import com.doorknock.backend.auth.dto.VerifyEmailResponse;
 import com.doorknock.backend.auth.dto.VerifyEmailRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -33,7 +34,7 @@ public class AuthController {
     }
 
     @PostMapping("/verify-email")
-    public AuthResponse verifyEmail(@Valid @RequestBody VerifyEmailRequest request) {
+    public VerifyEmailResponse verifyEmail(@Valid @RequestBody VerifyEmailRequest request) {
         return authService.verifyEmail(request);
     }
 

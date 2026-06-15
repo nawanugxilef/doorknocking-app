@@ -23,7 +23,6 @@ export default function HomePage() {
   const [isResending, setIsResending] = useState(false);
   const [message, setMessage] = useState("");
   const [verification, setVerification] = useState<RegisterResponse | null>(null);
-  const [verificationCode, setVerificationCode] = useState("");
   const [form, setForm] = useState({
     fullName: "",
     email: "",
@@ -34,7 +33,7 @@ export default function HomePage() {
 
   const showVerification = mode === "register" && verification !== null;
   const submitLabel = useMemo(() => {
-    if (showVerification) return "Verify email";
+    if (showVerification) return "Back to sign in";
     return mode === "login" ? "Sign in" : "Create account";
   }, [mode, showVerification]);
 
@@ -45,15 +44,7 @@ export default function HomePage() {
 
     try {
       if (showVerification) {
-        const response = await apiRequest<AuthResponse>("/api/auth/verify-email", {
-          method: "POST",
-          body: JSON.stringify({
-            email: verification.email,
-            code: verificationCode,
-          }),
-        });
-        saveSession(response);
-        window.location.href = "/profile";
+        switchMode("login");
         return;
       }
 
@@ -63,7 +54,7 @@ export default function HomePage() {
           body: JSON.stringify({ email: form.email, password: form.password }),
         });
         saveSession(response);
-        window.location.href = "/profile";
+        window.location.assign("/profile");
         return;
       }
 
@@ -72,7 +63,6 @@ export default function HomePage() {
         body: JSON.stringify(form),
       });
       setVerification(response);
-      setVerificationCode("");
       setMessage(response.message);
     } catch (error) {
       setMessage(error instanceof Error ? error.message : "Something went wrong");
@@ -104,12 +94,10 @@ export default function HomePage() {
     setMode(nextMode);
     setMessage("");
     setVerification(null);
-    setVerificationCode("");
   }
 
   function resetVerification() {
     setVerification(null);
-    setVerificationCode("");
     setMessage("");
   }
 
@@ -168,23 +156,17 @@ export default function HomePage() {
                 <>
                   <div className="space-y-2">
                     <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#071d68]/70">
-                      Verify email
+                      Check your inbox
                     </p>
                     <h2 className="text-[28px] font-semibold tracking-[-0.02em] text-slate-950">
-                      Enter the 6-digit code
+                      Open the verification link
                     </h2>
                     <p className="text-sm leading-6 text-slate-500">
-                      We sent a code to <span className="font-semibold text-slate-800">{verification.email}</span>. It expires in {verification.expiresInMinutes} minutes.
+                      We sent a verification email to{" "}
+                      <span className="font-semibold text-slate-800">{verification.email}</span>.
+                      Open the link in that email to activate your account, then come back here to sign in.
                     </p>
                   </div>
-
-                  <Field
-                    icon={<Mail size={16} />}
-                    label="Verification code"
-                    onChange={setVerificationCode}
-                    placeholder="123456"
-                    value={verificationCode}
-                  />
 
                   <div className="flex flex-wrap gap-3">
                     <button
@@ -202,7 +184,7 @@ export default function HomePage() {
                       type="button"
                     >
                       {isResending ? <Loader2 className="animate-spin" size={16} /> : <RefreshCw size={16} />}
-                      Resend code
+                      Resend email
                     </button>
                   </div>
                 </>

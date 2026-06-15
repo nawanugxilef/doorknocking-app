@@ -33,12 +33,12 @@ export default function AdminUsersPage() {
   useEffect(() => {
     const session = getSession();
     if (!session) {
-      window.location.href = "/";
+      window.location.assign("/");
       return;
     }
 
     if (!["ADMIN", "VOLUNTEER_COORDINATOR"].includes(session.user.role)) {
-      window.location.href = "/profile";
+      window.location.assign("/profile");
       return;
     }
 
@@ -53,7 +53,7 @@ export default function AdminUsersPage() {
       setMessage(error instanceof Error ? error.message : "Unable to load users");
       if (error instanceof Error && error.message.includes("401")) {
         clearSession();
-        window.location.href = "/";
+        window.location.assign("/");
       }
     } finally {
       setIsLoading(false);

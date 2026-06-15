@@ -39,7 +39,7 @@ public class LegacyUserVerificationRunner implements CommandLineRunner {
                 select count(*)
                 from information_schema.columns
                 where table_name = 'app_users'
-                  and column_name in ('email_verified', 'verification_code_hash')
+                  and column_name in ('email_verified', 'verification_token')
                 """, Integer.class);
         return count != null && count == 2;
     }

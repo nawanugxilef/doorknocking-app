@@ -16,6 +16,13 @@ public interface UserRepository extends JpaRepository<AppUser, Long> {
     @Query("select user from AppUser user where lower(user.email) = lower(:email) and user.emailVerified = false")
     Optional<AppUser> findPendingVerificationByEmail(@Param("email") String email);
 
+    @Query("""
+            select user from AppUser user
+            where user.emailVerified = false
+              and user.verificationToken = :token
+            """)
+    Optional<AppUser> findPendingVerificationByToken(@Param("token") String token);
+
     @Query("select user from AppUser user where user.emailVerified is null")
     List<AppUser> findLegacyUsersWithoutVerificationStatus();
 }

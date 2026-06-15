@@ -32,7 +32,7 @@ export default function ProfilePage() {
   useEffect(() => {
     const session = getSession();
     if (!session) {
-      window.location.href = "/";
+      window.location.assign("/");
       return;
     }
 
@@ -45,7 +45,7 @@ export default function ProfilePage() {
       })
       .catch(() => {
         clearSession();
-        window.location.href = "/";
+        window.location.assign("/");
       });
   }, []);
 
@@ -81,7 +81,7 @@ export default function ProfilePage() {
 
   function logout() {
     clearSession();
-    window.location.href = "/";
+    window.location.assign("/");
   }
 
   if (!user) {

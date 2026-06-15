@@ -17,7 +17,11 @@ export type AuthResponse = {
 export type RegisterResponse = {
   email: string;
   message: string;
-  expiresInMinutes: number;
+};
+
+export type VerifyEmailResponse = {
+  email: string;
+  message: string;
 };
 
 const API_BASE_URL =

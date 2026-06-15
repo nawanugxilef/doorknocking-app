@@ -57,7 +57,7 @@ public class AppUser implements UserDetails {
 
     private Boolean emailVerified;
 
-    private String verificationCodeHash;
+    private String verificationToken;
 
     private Instant verificationExpiresAt;
 
